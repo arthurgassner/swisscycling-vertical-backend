@@ -15,6 +15,7 @@ if not RECORDS_FILEPATH.is_file():
         'name': pd.Series(dtype='string'),
         'datetime': pd.Series(dtype='datetime64[ns]'),
         'duration_s': pd.Series(dtype='int'),
+        'avatar_url': pd.Series(dtype='string'),
     })
     df.to_csv(RECORDS_FILEPATH, index=False)
 
