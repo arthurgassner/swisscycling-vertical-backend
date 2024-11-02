@@ -6,7 +6,7 @@ from pydantic import BaseModel
 import pandas as pd
 from pathlib import Path
 
-RECORDS_FILEPATH = Path('records.csv')
+RECORDS_FILEPATH = Path('data/records.csv')
 
 # Create empty records if the records is empty.
 if not RECORDS_FILEPATH.is_file():
