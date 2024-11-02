@@ -74,7 +74,7 @@ async def get_podium():
         raise HTTPException(status_code=500, detail="Error loading records.")
     
     # Only keep the top 3
-    df = df[df.rank <= 3]
+    df = df[df["rank"] <= 3]
  
     return {"podium": df.to_dict(orient='records')}
 
