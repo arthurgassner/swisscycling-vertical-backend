@@ -5,7 +5,10 @@
 This repo contains the code for the backend of _The Vertical_'s website.
 _The Vertical_ is a swiss cycling challenge consisting of cycling from Switzerland's northernmost point to Switzerland's southernmost point.  
 
-> This backend is a simple FastAPI for storing/retrieving records to be displayed on the frontend.
+The backend handles the storing/serving of records to be displayed on the frontend. 
+It is built in Python, leveraging FastAPI for handling routes and Docker for containerization.
+
+This backend is a simple FastAPI for storing/retrieving records to be displayed on the frontend.
 
 > [!NOTE]  
 > The code for the frontend can be found [here](https://github.com/arthurgassner/swisscycling-vertical-frontend).
