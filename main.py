@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 from pathlib import Path
+from datetime import datetime
 
 RECORDS_FILEPATH = Path('data/records.csv')
 
@@ -88,6 +89,44 @@ async def get_podium():
     df = df[df["rank"] <= 3]
  
     return {"podium": df.to_dict(orient='records')}
+
+@app.get("/add-dummy-records")
+async def get_add_dummy_records():
+    """Add 5 dummy records, meant for testing.
+
+    Raises:
+        HTTPException: 500 error if there is an issue loading the records.
+        HTTPException: 500 if there is an issue dumping the records to disk.
+    """
+    logger.info(f"Received GET /add-dummy-records")
+
+    # Load current records
+    try:
+        df = pd.read_csv(RECORDS_FILEPATH)
+    except Exception as e:
+        logger.error(f"Error loading records: {e}")
+        raise HTTPException(status_code=500, detail="Error loading records.")
+    
+    SOME_AVATAR_URL = "https://avatars.githubusercontent.com/u/38256417"
+    dummy_df = pd.DataFrame({
+        "name": ["This could be you", "This could also be you!", "You again, maybe", "Maybe you tomorrow?", "A you witin reach"],
+        "datetime": [datetime('2022-10-11'), datetime('2023-01-01'), datetime('1997-07-25'), datetime('2017-08-30'), datetime('2019-08-30')],
+        "duration_s": [60000, 50000, 72300, 30044, 80000],
+        "avatar_url": [SOME_AVATAR_URL] * 5
+    })
+    df = pd.concat([df,dummy_df], ignore_index=True)
+
+    # Recompute ranks based on 'duration_s'
+    df['rank'] = df['duration_s'].rank(method='min').astype(int)
+
+    # Save the updated DataFrame back to CSV
+    try:
+        df.to_csv(RECORDS_FILEPATH, index=False)
+    except Exception as e:
+        logger.error("Error saving records: %s", e)
+        raise HTTPException(status_code=500, detail="Error saving records")
+
+    return {"message": "Record added successfully", "status": 200}
 
 @app.post("/add-record")
 async def post_add_record(record: Record):
