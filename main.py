@@ -110,7 +110,7 @@ async def get_add_dummy_records():
     SOME_AVATAR_URL = "https://avatars.githubusercontent.com/u/38256417"
     dummy_df = pd.DataFrame({
         "name": ["This could be you", "This could also be you!", "You again, maybe", "Maybe you tomorrow?", "A you witin reach"],
-        "datetime": [datetime('2022-10-11'), datetime('2023-01-01'), datetime('1997-07-25'), datetime('2017-08-30'), datetime('2019-08-30')],
+        "datetime": [datetime(2020, 10, 31), datetime(2023, 1, 1), datetime(1997, 7, 25), datetime(2017, 8, 30), datetime(2019, 8, 30)],
         "duration_s": [60000, 50000, 72300, 30044, 80000],
         "avatar_url": [SOME_AVATAR_URL] * 5
     })
