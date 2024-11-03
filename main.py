@@ -52,6 +52,11 @@ async def get_root():
 
 @app.get("/records")
 async def get_records():
+    """Get all the records saved on disk.
+
+    Raises:
+        HTTPException: 500 error if there is an issue loading the records.
+    """
     logger.info("Received GET /records")
 
     # Load current records
@@ -65,6 +70,11 @@ async def get_records():
 
 @app.get("/podium")
 async def get_podium():
+    """Get the records whose rank is 1,2,3.
+
+    Raises:
+        HTTPException: 500 error if there is an issue loading the records.
+    """
     logger.info(f"Received GET /podium")
 
     # Load current records
@@ -81,6 +91,15 @@ async def get_podium():
 
 @app.post("/add-record")
 async def post_add_record(record: Record):
+    """Add the record to the list of record saved on disk.
+
+    Args:
+        record (Record): Record to be added.
+
+    Raises:
+        HTTPException: 500 if there is an issue loading the records from disk.
+        HTTPException: 500 if there is an issue dumping the records to disk.
+    """
     logger.info(f"Received POST /add-record with data: {record}")
 
     # Load current records
