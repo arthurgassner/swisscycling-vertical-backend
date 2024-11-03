@@ -118,6 +118,7 @@ async def get_add_dummy_records():
 
     # Recompute ranks based on 'duration_s'
     df['rank'] = df['duration_s'].rank(method='min').astype(int)
+    df = df.sort_values(by='rank')
 
     # Save the updated DataFrame back to CSV
     try:
@@ -159,6 +160,7 @@ async def post_add_record(record: Record):
 
     # Recompute ranks based on 'duration_s'
     df['rank'] = df['duration_s'].rank(method='min').astype(int)
+    df = df.sort_values(by='rank')
 
     # Save the updated DataFrame back to CSV
     try:
