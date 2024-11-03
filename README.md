@@ -8,4 +8,4 @@ _The Vertical_ is a swiss cycling challenge consisting of cycling from Switzerla
 > This backend is a simple FastAPI for storing/retrieving records to be displayed on the frontend.
 
 > [!NOTE]  
-> The code for the frontend can be found [here](https://github.com/arthurgassner/swisscycling-vertical-frontend)
+> The code for the frontend can be found [here](https://github.com/arthurgassner/swisscycling-vertical-frontend).
