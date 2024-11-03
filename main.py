@@ -116,9 +116,9 @@ async def get_add_dummy_records():
     })
     df = pd.concat([df,dummy_df], ignore_index=True)
 
-    # Recompute ranks based on 'duration_s'
-    df['rank'] = df['duration_s'].rank(method='max').astype(int)
-    df = df.sort_values(by='rank')
+    # Recompute ranks based on 'duration_s', 'datetime'
+    df = df.sort_values(by=['duration_s', 'datetime'])
+    df['rank'] = range(1, len(df)+1)
 
     # Save the updated DataFrame back to CSV
     try:
@@ -158,9 +158,9 @@ async def post_add_record(record: Record):
     }
     df = pd.concat([df, pd.DataFrame(new_record)], ignore_index=True)
 
-    # Recompute ranks based on 'duration_s'
-    df['rank'] = df['duration_s'].rank(method='max').astype(int)
-    df = df.sort_values(by='rank')
+    # Recompute ranks based on 'duration_s', 'datetime'
+    df = df.sort_values(by=['duration_s', 'datetime'])
+    df['rank'] = range(1, len(df)+1)
 
     # Save the updated DataFrame back to CSV
     try:
