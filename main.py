@@ -113,7 +113,8 @@ async def post_add_record(record: Record):
     new_record = {
         'name': record.name,
         'datetime': pd.to_datetime(record.datetime),
-        'duration_s': record.duration_s
+        'duration_s': record.duration_s,
+        'avatar_url': pd.Series(dtype='string'),
     }
     df = pd.concat([df, pd.DataFrame(new_record)], ignore_index=True)
 
