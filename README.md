@@ -9,3 +9,11 @@ _The Vertical_ is a swiss cycling challenge consisting of cycling from Switzerla
 
 > [!NOTE]  
 > The code for the frontend can be found [here](https://github.com/arthurgassner/swisscycling-vertical-frontend).
+
+## How to run
+
+To run it, run `docker compose build && docker compose up`.
+
+> [!NOTE]
+> Make sure the docker volume `swisscycling-vertical-backend-data` has been created
+> `docker volume create swisscycling-vertical-backend-data`
