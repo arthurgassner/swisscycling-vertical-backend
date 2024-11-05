@@ -15,8 +15,4 @@ This backend is a simple FastAPI for storing/retrieving records to be displayed 
 
 ## How to run
 
-To run it, run `docker compose build && docker compose up`.
-
-> [!NOTE]
-> Make sure the docker volume `swisscycling-vertical-backend-data` has been created, i.e. <br>
-> `docker volume create swisscycling-vertical-backend-data`
+To run it, run `docker compose up --build`.
