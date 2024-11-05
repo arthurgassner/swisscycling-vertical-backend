@@ -12,5 +12,5 @@ services:
     image: swisscycling-vertical-backend-image
     
 volumes:
-  swisscycling-vertical-backend-data:
+  swisscycling-vertical-data:
     driver: local
